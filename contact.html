@@ -27,6 +27,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+ 
 </head>
 
 <body>
@@ -90,7 +91,7 @@
       <br> Contact: +971-52-2889975,50-5766651</h4>
       <div class="row">
         <div class="col-md-8 mr-auto">
-          <form action="">
+          <form id="submit-form"  action="">
             <div class="contact_form-container">
               <div>
                 <div>
@@ -104,10 +105,10 @@
                 </div>
 
                 <div class="mt-5">
-                  <input type="text" placeholder="Message">
+                  <input  type="text" placeholder="Message">
                 </div>
                 <div class="mt-5">
-                  <button type="submit">
+                  <button type="submit" value="submit" >
                     send
                   </button>
                 </div>
@@ -273,7 +274,25 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
-  
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Please Contact +971-522889975, mentorsajm@gmail.com")
+
+            }
+        })
+    })
+</script>
 </body>
 
 </html>
